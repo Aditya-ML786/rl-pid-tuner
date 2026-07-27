@@ -1,16 +1,19 @@
 # rl-pid-tuner
-Model-free RL-based PID auto-tuner for Python. No MATLAB, no clean plant model required.
+Model-free RL-based PID auto-tuner for Python.
 
-This is a python library which automatically tune PID controller gains(Kp,Ki,Kd) using reinforcement learning
-The problems it solves are: 
-1.Solving by Use Ziegler-Nichols or similar methods which requires plant model to be linear time invarient which in real system does not happen.
-2.Dependance on matlab
-3.Tuning in trial and error basis which requires significant expertise and it's a slow process
+Classical tuning methods (Ziegler-Nichols, manual tuning) work well when you 
+have a clean transfer function and a single objective. They get harder to 
+apply when:
+1. You're balancing multiple competing objectives (overshoot vs settling 
+   time vs control effort), which classical formulas don't optimize for directly.
+2. You want to tune in simulation first, before running trial-and-error on 
+   real hardware.
 
-This project is for anyone who is interested in controls systems and want to build systems without expensive tooling or clean mathematical plant
-Status: Under active development
+RL replaces manual iteration with an automated search in simulation.
 
-Planned features:
-- RL-based PID gain tuning from step response data
-- Black-box plant support (no transfer function needed)
-- installable via pip
+v1 scope: SISO, linear plants only, simulated (no real hardware loop yet). 
+Nonlinear plants and cascade PID are explicitly out of scope until this 
+pipeline works end to end.
+
+Status: under active development. PIDController implemented; PIDEnv and 
+training loop in progress.
