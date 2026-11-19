@@ -84,6 +84,3 @@ This compares RL vs Ziegler-Nichols vs SIMC vs a plain optimizer on the nominal 
 | Very slow (< 200 sims/s) | CPU bottleneck or `n_envs` too high → use `DummyVecEnv` (`n_envs: 1` or `2`) and close background apps |
 | RL worse than optimizer baseline | Normal for a single fixed plant. RL's advantage shows in the robust and reuse cases. Report it honestly. |
 
-## 9. What to send back to the AI (Phase 7)
-
-From each run folder: `run_summary.json`, `eval_report.json`, `rl_vs_baselines.png`, plus a screenshot of the `eval/mean_reward` curve. **Don't** send `best_model.zip` (not needed).
