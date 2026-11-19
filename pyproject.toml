@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rl-pid-tuner"
+version = "0.1.0"
+description = "Model-free RL-based PID auto-tuner for Python (SISO, linear, simulated)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["numpy", "scipy"]
+
+[project.optional-dependencies]
+train = ["gymnasium", "stable-baselines3", "torch", "tensorboard", "pyyaml"]
+plot = ["matplotlib"]
+dev = ["pytest"]
+
+[project.scripts]
+rl-pid-tuner = "rl_pid_tuner.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["rl_pid_tuner*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,12 @@
+# Reusable policy: a new random 2nd-order plant every episode (wn, zeta, K all vary).
+# Afterwards the same model can tune unseen 2nd-order plants in seconds, without retraining.
+name: second_order_family
+algorithm: SAC
+total_steps: 200000
+device: cpu
+plant: {family: second_order}
+spec: balanced
+uncertainty: 0.1
+env: {max_steps: 10}
+eval: {freq: 5000, episodes: 10}
+checkpoint_freq: 25000

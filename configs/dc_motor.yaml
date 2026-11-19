@@ -1,0 +1,11 @@
+# Main experiment: tune the DC motor (position) and compare with Ziegler-Nichols.
+# ~200k steps; expect roughly 20-60 minutes on a laptop CPU.
+name: dc_motor
+algorithm: SAC
+total_steps: 200000
+device: cpu
+plant: {name: dc_motor_position}
+spec: balanced              # fast | balanced | no_overshoot | robust (or a custom dict)
+env: {max_steps: 10}
+eval: {freq: 5000, episodes: 3}
+checkpoint_freq: 25000

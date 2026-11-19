@@ -1,0 +1,12 @@
+# Robust tuning: gains must work on the DC motor even if its parameters are off by up to +/-20 %.
+# Each step is scored on the nominal plant + 3 perturbed copies, so training is ~4x slower per step.
+name: dc_motor_robust
+algorithm: SAC
+total_steps: 100000
+device: cpu
+plant: {name: dc_motor_position}
+spec: robust
+uncertainty: 0.2
+env: {max_steps: 10, n_robust: 4}
+eval: {freq: 5000, episodes: 5}
+checkpoint_freq: 25000

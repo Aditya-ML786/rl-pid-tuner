@@ -1,0 +1,12 @@
+# Smoke test: ~2,000 steps, finishes in about a minute. Only checks that the pipeline works.
+name: smoke
+algorithm: SAC
+total_steps: 2000
+seed: 0
+device: cpu
+plant: {name: dc_motor_position}
+spec: balanced
+env: {max_steps: 10}
+algo: {learning_starts: 200, batch_size: 64}
+eval: {freq: 500, episodes: 2}
+checkpoint_freq: 1000
